@@ -9,19 +9,19 @@ public class MyAspect {
 	 * Before Advice
 	 * @param joinPotin
 	 */
-	public void myBefore(JoinPoint joinPotin) {
+	public void myBefore(JoinPoint joinPoint) {
 		System.out.println("Before Advice: Checking Permission-------");
-		System.out.print("Target Class: " + joinPotin.getTarget());
-		System.out.println("The woven method: " + joinPotin.getSignature().getName());
+		System.out.print("Target Class: " + joinPoint.getTarget());
+		System.out.println("The woven method: " + joinPoint.getSignature().getName());
 	}
 	
 	/**
 	 * After-returning Advice
 	 * @param joinPotin
 	 */
-	public void myAfterReturning(JoinPoint joinPotin) {
+	public void myAfterReturning(JoinPoint joinPoint) {
 		System.out.println("After-return Advice: Log Processing-------");
-		System.out.println("The woven method: " + joinPotin.getSignature().getName());
+		System.out.println("The woven method: " + joinPoint.getSignature().getName());
 	}
 	
 	/**
@@ -41,7 +41,7 @@ public class MyAspect {
 	 * @param joinPotin
 	 * @param e
 	 */
-	public void myAfterThrowing(JoinPoint joinPotin, Throwable e) {
+	public void myAfterThrowing(JoinPoint joinPoint, Throwable e) {
 		System.out.println("Exception: " + e.getMessage());
 	}
 	

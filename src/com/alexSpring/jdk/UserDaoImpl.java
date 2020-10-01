@@ -1,10 +1,13 @@
 package com.alexSpring.jdk;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * Target Class
  * @author liu.zehu
  *
  */
+@Repository("userDao")
 public class UserDaoImpl implements UserDao {
 
 	@Override
