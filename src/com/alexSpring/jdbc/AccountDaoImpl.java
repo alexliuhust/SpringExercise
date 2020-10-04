@@ -1,6 +1,10 @@
 package com.alexSpring.jdbc;
 
+import java.util.List;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 public class AccountDaoImpl implements AccountDao {
 	
@@ -34,6 +38,21 @@ public class AccountDaoImpl implements AccountDao {
 		
 		int num = this.jdbcTemplate.update(sql, id);
 		return num;
+	}
+
+	@Override
+	public Account findAccountById(int id) {
+		String sql = "select * from account where id = ?";
+		RowMapper<Account> rowMapper = new BeanPropertyRowMapper<Account>(Account.class);
+		return this.jdbcTemplate.queryForObject(sql, rowMapper, id);
+	}
+
+
+	@Override
+	public List<Account> findAccountAll() {
+		String sql = "select * from account";
+		RowMapper<Account> rowMapper = new BeanPropertyRowMapper<Account>(Account.class);
+		return this.jdbcTemplate.query(sql, rowMapper);
 	}
 
 }

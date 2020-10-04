@@ -1,5 +1,7 @@
 package com.alexSpring.jdbc;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -102,6 +104,25 @@ public class JdbcTemplateTest {
 				System.out.println("Successfully deleted " + num + " record(s)!");
 		} else
 			System.out.println("Failed to delete!");
+	}
+	
+	@Test
+	public void findByIdTest() {
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		AccountDao accountDao = (AccountDao) applicationContext.getBean("accountDao");
+		
+		Account account = accountDao.findAccountById(1);
+		System.out.println(account);
+	}
+	
+	@Test
+	public void findAllTest() {
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		AccountDao accountDao = (AccountDao) applicationContext.getBean("accountDao");
+		
+		List<Account> accounts = accountDao.findAccountAll();
+		for (Account account : accounts) 
+			System.out.println(account);
 	}
 
 }
