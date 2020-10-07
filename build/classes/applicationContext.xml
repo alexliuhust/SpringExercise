@@ -48,14 +48,14 @@
 
 
 	<!-- Configure transaction manager, dependent on data source -->
-	<bean id="trasactionManager"
+	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
 	<!-- Write advice -->
 	<tx:advice id="txAdvice"
-		transaction-manager="trasactionManager">
+		transaction-manager="transactionManager">
 		<tx:attributes>
 			<!-- name: * represent any name -->
 			<tx:method name="*" propagation="REQUIRED"

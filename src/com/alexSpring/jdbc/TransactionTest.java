@@ -20,6 +20,20 @@ public class TransactionTest {
 		
 		System.out.println("Successfully transfered!");
 		
+	}
+	
+	@Test
+	public void annotationTest() {
+		ApplicationContext appcationContext = new ClassPathXmlApplicationContext("applicationContext_annotation.xml");
+		AccountDao accountDao = (AccountDao) appcationContext.getBean("accountDao");
+		String outUser = "Jaconara";
+		String inUser = "Biaszecelry";
+		Double money = 100.0;
+		
+		accountDao.transfer(outUser, inUser, money);
+		
+		System.out.println("Successfully transfered!");
+		
 		
 	}
 
